@@ -1,0 +1,8 @@
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.7.12&packaging=jar&jvmVersion=11&groupId=com.formacionbanca&artifactId=springboot-service-eureka-server&name=springboot-service-eureka-server&description=Demo%20project%20for%20Spring%20Boot&packageName=com.formacionbanca.springboot-service-eureka-server&dependencies=devtools,cloud-eureka-server
+
+//add JAXB POMP -> jdk11 o+
+
+<dependency>
+	<groupId>org.glassfish.jaxb</groupId>
+	<artifactId>jaxb-runtime</artifactId>
+</dependency>
