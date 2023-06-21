@@ -9,8 +9,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Service
-public class ItemServiceImpl implements ItemService{
+@Service("itemServiceRestTemplate")
+public class ItemServiceRestTemplate implements ItemService{
     @Autowired
     private RestTemplate restClient;
 
