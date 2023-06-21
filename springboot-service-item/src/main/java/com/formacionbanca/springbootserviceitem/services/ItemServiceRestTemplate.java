@@ -16,7 +16,7 @@ public class ItemServiceRestTemplate implements ItemService{
 
     @Override
     public List<Item> findAll() {
-        List<Product> products = Arrays.asList(Objects.requireNonNull(restClient.getForObject("http://localhost:8003/apiProducts/products", Product[].class)));
+        List<Product> products = Arrays.asList(Objects.requireNonNull(restClient.getForObject("http://service-products/products", Product[].class)));
         return products.stream().map(p -> new Item(p,1)).collect(Collectors.toList());
 
     }
@@ -25,7 +25,7 @@ public class ItemServiceRestTemplate implements ItemService{
     public Item findById(Long id, Integer amount) {
         Map<String, String> pathVariables = new HashMap<>();
         pathVariables.put("id", id.toString());
-        Product product = restClient.getForObject("http://localhost:8003/apiProducts/products/{id}", Product.class, pathVariables );
+        Product product = restClient.getForObject("http://service-products/products/{id}", Product.class, pathVariables );
         return new Item(product,amount);
     }
 }

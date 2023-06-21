@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("apiItems")
 public class ItemController {
     @Autowired
     @Qualifier("itemServiceFeign")
@@ -24,8 +23,13 @@ public class ItemController {
         return itemService.findAll();
     }
 
+    @GetMapping("/prueba")
+    public String prueba() {
+        return "hola hola";
+    }
 
-    @GetMapping("/items/{id}/cantidad/{amount}")
+
+    @GetMapping("/items/{id}/amount/{amount}")
     public Item getItemById(@PathVariable Long id, @PathVariable Integer amount) {
         return itemService.findById(id,amount);
     }
