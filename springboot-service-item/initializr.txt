@@ -1,0 +1,1 @@
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.7.12&packaging=jar&jvmVersion=11&groupId=com.formacionbanca&artifactId=springboot-service-item&name=springboot-service-item&description=Demo%20project%20for%20Spring%20Boot&packageName=com.formacionbanca.springboot-service-item&dependencies=web,devtools
