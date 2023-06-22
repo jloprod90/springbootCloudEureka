@@ -15,8 +15,19 @@ spring:
           uri: lb://SERVICE-PRODUCTS
           predicates:
             - Path=/api/serviceProducts/**
+#            - Header= token, \d+
+#            - Header= Content-Type,application/json
+#            - Method= GET, POST
+#            - Query=color
+#            - Cookie=color, azul
           filters:
             - StripPrefix=2
+            - ExampleCookie=hola este es mi mensaje personalizado, usuario, PepitoGrillo
+#            - name: Example
+#              args:
+#                message: hola este es mi mensaje personalizado
+#                cookieName: usuario
+#                cookieValue: PepitoGrillo
           metadata:
             ribbon:
               enabled: false
@@ -26,6 +37,9 @@ spring:
             - Path=/api/serviceItems/**
           filters:
             - StripPrefix=2
+            - AddRequestHeader=token-request,123456Req
+            - AddResponseHeader=token-response,123456Res
+            - AddRequestParameter=name, Pepillo
           metadata:
             ribbon:
               enabled: false
