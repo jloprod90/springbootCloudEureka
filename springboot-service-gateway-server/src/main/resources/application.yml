@@ -1,16 +1,31 @@
+server:
+  port: 8090
+
 spring:
+  application:
+    name: service-gateway-server
+    eureka:
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka
   cloud:
     gateway:
       routes:
         - id: service-products
-          uri: lb://service-products
+          uri: lb://SERVICE-PRODUCTS
           predicates:
-            - Path=/api/products/**
+            - Path=/api/serviceProducts/**
           filters:
             - StripPrefix=2
+          metadata:
+            ribbon:
+              enabled: false
         - id: service-items
-          uri: lb://service-items
+          uri: lb://SERVICE-ITEMS
           predicates:
-            - Path=/api/items/**
+            - Path=/api/serviceItems/**
           filters:
             - StripPrefix=2
+          metadata:
+            ribbon:
+              enabled: false
