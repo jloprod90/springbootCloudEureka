@@ -49,7 +49,7 @@ public class ItemController {
     @GetMapping("/items/{id}/amount/{amount}")
     public Item getItemById(@PathVariable Long id, @PathVariable Integer amount) {
         return circuitBreakerFactory.create("items")
-                .run(() -> itemService.findById(id,amount) /*, e -> alternativeMethod(id, amount, e)*/);
+                .run(() -> itemService.findById(id,amount) , e -> alternativeMethod(id, amount, e));
     }
 
     public Item alternativeMethod(Long id, Integer amount, Throwable e) {

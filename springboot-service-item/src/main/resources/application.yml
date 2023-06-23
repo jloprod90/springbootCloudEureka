@@ -1,0 +1,22 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      example:
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-duration-threshold: 2s
+
+
+    instances:
+      items:
+        base-config: example
+  timelimiter:
+    config:
+      example:
+        timeout-duration: 2s
+    instances:
+      items:
+        base-config: example
+

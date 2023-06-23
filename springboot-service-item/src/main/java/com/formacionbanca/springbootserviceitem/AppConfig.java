@@ -31,8 +31,12 @@ public class AppConfig {
                             .failureRateThreshold(50) // num de fallos
                             .waitDurationInOpenState(Duration.ofSeconds(10L)) //tiempo de espera abierto
                             .permittedNumberOfCallsInHalfOpenState(5) // numero de llamadas permitidas en semiAbierto
+                            .slowCallRateThreshold(50)// umbral % de llamadas lentas
+                            .slowCallDurationThreshold(Duration.ofSeconds(2L)) // parametro tiempo para considerar una llamada lenta
                             .build())
-                    .timeLimiterConfig(TimeLimiterConfig.ofDefaults())
+                    //.timeLimiterConfig(TimeLimiterConfig.ofDefaults())
+                    .timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(3L))
+                            .build())
                     .build();
         });
     }
