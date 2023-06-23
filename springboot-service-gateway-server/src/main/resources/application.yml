@@ -1,6 +1,30 @@
 server:
   port: 8090
 
+# config resilience4j reactor
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      example:
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 2s
+    instances:
+      products:
+        base-config: example
+  timelimiter:
+    configs:
+      example:
+        timeout-duration: 2s
+    instances:
+      products:
+        base-config: example
+
+
 spring:
   application:
     name: service-gateway-server
@@ -21,6 +45,11 @@ spring:
 #            - Query=color
 #            - Cookie=color, azul
           filters:
+            - name: CircuitBreaker
+              args:
+                name: products
+                statusCode: 500
+                fallbackUri: forward:/api/serviceItems/9/amount/5
             - StripPrefix=2
             - ExampleCookie=hola este es mi mensaje personalizado, usuario, PepitoGrillo
 #            - name: Example
