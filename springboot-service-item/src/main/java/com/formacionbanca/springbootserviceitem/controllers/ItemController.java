@@ -3,6 +3,7 @@ package com.formacionbanca.springbootserviceitem.controllers;
 import com.formacionbanca.springbootserviceitem.models.Item;
 import com.formacionbanca.springbootserviceitem.models.Product;
 import com.formacionbanca.springbootserviceitem.services.ItemService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +47,16 @@ public class ItemController {
     }
 
 
-    @GetMapping("/items/{id}/amount/{amount}")
+    @GetMapping("/items/{id}/amount/{amount}") // configuracion manual circuitBreaker
     public Item getItemById(@PathVariable Long id, @PathVariable Integer amount) {
         return circuitBreakerFactory.create("items")
                 .run(() -> itemService.findById(id,amount) , e -> alternativeMethod(id, amount, e));
+    }
+
+    @CircuitBreaker(name="example", fallbackMethod = "alternativeMethod") // configuracion automática, necesita configuración por application.yml o application.properties
+    @GetMapping("/items2/{id}/amount/{amount}")
+    public Item getItemById2(@PathVariable Long id, @PathVariable Integer amount) {
+        return itemService.findById(id,amount);
     }
 
     public Item alternativeMethod(Long id, Integer amount, Throwable e) {
