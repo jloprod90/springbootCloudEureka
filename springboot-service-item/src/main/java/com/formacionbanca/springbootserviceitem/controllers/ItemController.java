@@ -40,8 +40,8 @@ public class ItemController {
 
 
     @Autowired
-    //@Qualifier("itemServiceFeign")
-    @Qualifier("itemServiceRestTemplate")
+    @Qualifier("itemServiceFeign")
+    //@Qualifier("itemServiceRestTemplate")
     private ItemService itemService;
 
     public ItemController(CircuitBreakerFactory circuitBreakerFactory, ItemService itemService) {
