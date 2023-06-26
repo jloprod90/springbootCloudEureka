@@ -1,6 +1,8 @@
 package com.formacionbanca.springbootserviceproducts.services;
 
-import com.formacionbanca.springbootserviceproducts.models.entities.Product;
+
+
+import com.formacionbanca.springbootservicecommons.models.entity.Product;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package com.formacionbanca.springbootserviceitem.models;
 
+import com.formacionbanca.springbootservicecommons.models.entity.Product;
+
 public class Item {
 
     private Product product;

@@ -1,6 +1,6 @@
 package com.formacionbanca.springbootserviceitem.clients;
 
-import com.formacionbanca.springbootserviceitem.models.Product;
+import com.formacionbanca.springbootservicecommons.models.entity.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

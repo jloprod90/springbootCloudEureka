@@ -1,7 +1,7 @@
 package com.formacionbanca.springbootserviceitem.controllers;
 
+import com.formacionbanca.springbootservicecommons.models.entity.Product;
 import com.formacionbanca.springbootserviceitem.models.Item;
-import com.formacionbanca.springbootserviceitem.models.Product;
 import com.formacionbanca.springbootserviceitem.services.ItemService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;

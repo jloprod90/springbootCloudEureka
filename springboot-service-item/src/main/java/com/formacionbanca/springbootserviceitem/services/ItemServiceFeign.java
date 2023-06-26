@@ -1,10 +1,9 @@
 package com.formacionbanca.springbootserviceitem.services;
 
+import com.formacionbanca.springbootservicecommons.models.entity.Product;
 import com.formacionbanca.springbootserviceitem.clients.ProductClientRest;
 import com.formacionbanca.springbootserviceitem.models.Item;
-import com.formacionbanca.springbootserviceitem.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,7 @@
 package com.formacionbanca.springbootserviceproducts.services;
 
-import com.formacionbanca.springbootserviceproducts.models.entities.Product;
+
+import com.formacionbanca.springbootservicecommons.models.entity.Product;
 import com.formacionbanca.springbootserviceproducts.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

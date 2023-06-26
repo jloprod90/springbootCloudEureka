@@ -1,4 +1,4 @@
-package com.formacionbanca.springbootserviceproducts.models.entities;
+package com.formacionbanca.springbootservicecommons.models.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "products")
-public class Product  implements Serializable {
+public class Product implements Serializable {
 
     private static final long serialVersionUID = 259530416831069324L;
     @Id

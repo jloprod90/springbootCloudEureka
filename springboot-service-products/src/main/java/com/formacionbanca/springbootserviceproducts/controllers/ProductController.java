@@ -1,6 +1,7 @@
 package com.formacionbanca.springbootserviceproducts.controllers;
 
-import com.formacionbanca.springbootserviceproducts.models.entities.Product;
+
+import com.formacionbanca.springbootservicecommons.models.entity.Product;
 import com.formacionbanca.springbootserviceproducts.services.ProductService;
 import com.formacionbanca.springbootserviceproducts.services.ProductServiceImpl;
 import com.netflix.discovery.converters.Auto;

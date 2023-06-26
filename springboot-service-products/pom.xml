@@ -34,6 +34,14 @@
 		</dependency>
 		<!-- EUREKA DISCOVERY CLIENT -->
 
+		<!-- SERVICE-COMMONS-->
+		<dependency>
+			<groupId>com.formacionbanca</groupId>
+			<artifactId>springboot-service-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- SERVICE-COMMONS-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
