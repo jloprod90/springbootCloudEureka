@@ -40,7 +40,8 @@ public class ItemController {
 
 
     @Autowired
-    @Qualifier("itemServiceFeign")
+    //@Qualifier("itemServiceFeign")
+    @Qualifier("itemServiceRestTemplate")
     private ItemService itemService;
 
     public ItemController(CircuitBreakerFactory circuitBreakerFactory, ItemService itemService) {
@@ -131,4 +132,18 @@ public class ItemController {
     // POST "/actuator/refresh" -> actualiza la configuración automaticamente sin reiniciar el servicio, debe tener el @RefreshScope y configuración.
 
 
+    @PostMapping("/create-product")
+    public Product createProduct(@RequestBody Product product) {
+        return itemService.createProduct(product);
+    }
+
+    @PutMapping("/update-product/{id}")
+    public Product createProduct(@RequestBody Product product, @PathVariable ("id") Long productId) {
+        return itemService.updateProduct(product, productId);
+    }
+
+    @DeleteMapping("/delete-product/{id}")
+    public void deleteProduct(@PathVariable ("id") Long productId) {
+        itemService.deleteProduct(productId);
+    }
 }

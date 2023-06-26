@@ -7,10 +7,8 @@ import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -56,6 +54,25 @@ public class ProductController {
         product.setPort(Integer.parseInt(Objects.requireNonNull(env.getProperty("local.server.port"))));
         //product.setPort(port);
         return product;
+    }
+
+    @PostMapping("/products/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product createProduct(@RequestBody Product product) {
+        return productService.saveProduct(product);
+    }
+
+
+    @DeleteMapping("/products/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProductById(@PathVariable ("id") Long productId) {
+        productService.deleteProductById(productId);
+    }
+
+    @PutMapping("/products/update/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void deleteProductById(@RequestBody Product product, @PathVariable ("id") Long productId) {
+        productService.updateProduct(productId, product);
     }
 
 

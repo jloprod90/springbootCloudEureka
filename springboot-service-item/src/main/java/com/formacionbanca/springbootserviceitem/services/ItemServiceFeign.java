@@ -2,6 +2,7 @@ package com.formacionbanca.springbootserviceitem.services;
 
 import com.formacionbanca.springbootserviceitem.clients.ProductClientRest;
 import com.formacionbanca.springbootserviceitem.models.Item;
+import com.formacionbanca.springbootserviceitem.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.context.annotation.Primary;
@@ -24,5 +25,20 @@ public class ItemServiceFeign implements ItemService{
     @Override
     public Item findById(Long id, Integer amount) {
         return new Item(productClientRest.getProductById(id),amount);
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public Product updateProduct(Product product, Long productId) {
+        return null;
+    }
+
+    @Override
+    public void deleteProduct(Long productId) {
+
     }
 }

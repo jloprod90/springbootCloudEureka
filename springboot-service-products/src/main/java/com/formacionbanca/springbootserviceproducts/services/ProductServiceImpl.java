@@ -22,4 +22,28 @@ public class ProductServiceImpl implements ProductService{
     public Product findProductById(Long productId) {
         return productRepository.findById(productId).orElse(null);
     }
+
+    @Override
+    @Transactional
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    @Override
+    @Transactional
+    public void deleteProductById(Long productId) {
+        productRepository.deleteById(productId);
+    }
+
+    @Override
+    public Product updateProduct(Long productId, Product product) {
+        Product productDb = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("No existe el producto con ID: " + productId));
+
+        productDb.setName(product.getName());
+        productDb.setPrice(productDb.getPrice());
+
+        return productRepository.save(productDb);
+
+    }
 }
