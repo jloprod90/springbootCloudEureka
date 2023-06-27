@@ -73,3 +73,16 @@ spring:
           metadata:
             ribbon:
               enabled: false
+        - id: service-users
+          uri: lb://SERVICE-USERS
+          predicates:
+            - Path=/api/serviceUsers/**
+          filters:
+            - StripPrefix=2
+        - id: service-oauth
+          uri: lb://SERVICE-OAUTH
+          predicates:
+            - Path=/api/serviceOauth/**
+          filters:
+            - StripPrefix=2
+

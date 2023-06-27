@@ -27,9 +27,7 @@ public class ExampleGlobalFilters implements GlobalFilter, Ordered {
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
             logger.info("ejecutando filtro post");
 
-            Optional.ofNullable(exchange.getRequest().getHeaders().getFirst("token")).ifPresent(valor ->{
-                exchange.getResponse().getHeaders().add("token",valor);
-            });
+            Optional.ofNullable(exchange.getRequest().getHeaders().getFirst("token")).ifPresent(valor -> exchange.getResponse().getHeaders().add("token",valor));
 
             exchange.getResponse().getCookies().add("color", ResponseCookie.from("color","rojo").build());
             //exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);

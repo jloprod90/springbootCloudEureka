@@ -1,0 +1,1 @@
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.7.13&packaging=jar&jvmVersion=11&groupId=com.formacionbanca&artifactId=springboot-service-users&name=springboot-service-users&description=Demo%20project%20for%20Spring%20Boot&packageName=com.formacionbanca.springboot-service-users&dependencies=data-jpa,h2,cloud-eureka,web,devtools
