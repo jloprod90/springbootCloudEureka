@@ -80,6 +80,13 @@
 		</dependency>
 		<!-- JAXB -->
 
+		<!-- CONFIG CLIENT -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<!-- CONFIG CLIENT -->
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

@@ -18,6 +18,7 @@ public class InfoAdditionalToken implements TokenEnhancer {
     @Autowired
     private IUserService userService;
 
+    @Override
     public OAuth2AccessToken enhance (OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
         Map<String, Object> info = new HashMap<>();
 

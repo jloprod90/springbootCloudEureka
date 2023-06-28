@@ -21,6 +21,8 @@ public class User implements Serializable {
     private String name;
     private String surname;
     private String email;
+
+    private Integer intentos;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -91,5 +93,13 @@ public class User implements Serializable {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public Integer getIntentos() {
+        return intentos;
+    }
+
+    public void setIntentos(Integer intentos) {
+        this.intentos = intentos;
     }
 }
