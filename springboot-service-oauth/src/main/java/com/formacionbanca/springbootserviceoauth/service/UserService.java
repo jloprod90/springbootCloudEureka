@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
-public class UserService implements UserDetailsService {
+public class UserService implements IUserService, UserDetailsService {
 
     private Logger logger = LoggerFactory.getLogger(UserDetailsService.class);
     @Autowired
@@ -44,4 +44,8 @@ public class UserService implements UserDetailsService {
 
     }
 
+    @Override
+    public com.formacionbanca.springbootservicecommonsusers.models.entity.User findByUsername(String username) {
+        return userFeignClient.findUserByUsername(username);
+    }
 }
