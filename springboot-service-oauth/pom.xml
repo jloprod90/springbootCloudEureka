@@ -94,6 +94,20 @@
 		</dependency>
 		<!-- CLOUD BOOTSTRAP -->
 
+		<!-- SLEUTH -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<!-- SLEUTH -->
+
+		<!-- ZIPKIN -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+		<!-- ZIPKIN -->
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

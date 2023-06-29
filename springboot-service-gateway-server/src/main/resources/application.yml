@@ -88,3 +88,7 @@ spring:
           filters:
             - StripPrefix=2
 
+
+  sleuth:
+    sampler:
+      probability=1.0

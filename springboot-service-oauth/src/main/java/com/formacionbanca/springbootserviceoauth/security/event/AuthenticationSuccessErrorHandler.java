@@ -6,6 +6,7 @@ import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.security.authentication.AuthenticationEventPublisher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -20,6 +21,9 @@ public class AuthenticationSuccessErrorHandler implements AuthenticationEventPub
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    public Tracer tracer;
 
     @Override
     public void publishAuthenticationSuccess(Authentication authentication) {
@@ -44,14 +48,14 @@ public class AuthenticationSuccessErrorHandler implements AuthenticationEventPub
 
     @Override
     public void publishAuthenticationFailure(AuthenticationException exception, Authentication authentication) {
-        String mensaje = "Error en el Login: " + exception.getMessage();
-        log.error(mensaje);
-        System.out.println(mensaje);
+        String message = "Error en el Login: " + exception.getMessage();
+        log.error(message);
+        System.out.println(message);
 
         try {
 
             StringBuilder errors = new StringBuilder();
-            errors.append(mensaje);
+            errors.append(message);
 
             User userModel = userService.findByUsername(authentication.getName());
             if (userModel.getIntentos() == null) {
@@ -74,6 +78,8 @@ public class AuthenticationSuccessErrorHandler implements AuthenticationEventPub
             }
 
             userService.update(userModel, userModel.getId());
+
+            tracer.currentSpan().tag("error.mensaje", errors.toString());
 
         } catch (FeignException e) {
             log.error(String.format("El usuario %s no existe en el sistema", authentication.getName()));
