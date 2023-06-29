@@ -87,6 +87,13 @@
 		</dependency>
 		<!-- CONFIG CLIENT -->
 
+		<!-- CLOUD BOOTSTRAP -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
+		<!-- CLOUD BOOTSTRAP -->
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

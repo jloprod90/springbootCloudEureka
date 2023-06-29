@@ -19,9 +19,11 @@ public class SpringSecurityConfig {
                 .pathMatchers("/api/serviceOauth/oauth/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/api/serviceProducts/products",
                         "/api/serviceItems/items",
-                        "/api/serviceUsers/users",
-                        "/api/serviceItems/items/{id}/amount/{amount}",
-                        "/api/serviceProducts/products/{id}").permitAll()
+                        "/api/serviceUsers/users"
+                        //,
+                        //"/api/serviceItems/items/{id}/amount/{amount}",
+                        //"/api/serviceProducts/products/{id}"
+                        ).permitAll()
                 .pathMatchers(HttpMethod.GET,"/api/serviceUsers/users/{id}").hasAnyRole("ADMIN","USER")
                 .pathMatchers("/api/serviceProducts/**", "/api/serviceItems/**", "/api/serviceUsers/**").hasRole("ADMIN")
                 .anyExchange().authenticated()
